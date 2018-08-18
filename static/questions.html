@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>无论做什么，也不会有人愿意多陪我说说话的！</title>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <style>
+    .question {
+      margin-bottom: 20px;
+    }
+
+    pre {
+      display: block;
+      padding: 10px;
+      margin: 0 0 10.5px;
+      font-size: 14px;
+      line-height: 1.42857143;
+      word-break: break-all;
+      color: #333333;
+      background-color: #f5f5f5;
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    pre span.code-keyword {
+      color: blue;
+    }
+
+    pre span.code-key1 {
+      color: #63a858;
+    }
+
+    pre span.code-keyred {
+      color: #d53c4c;
+    }
+
+    .stem {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .ques-no {
+      color: #b4881d;
+      margin-right: 5px;
+    }
+
+    .keyword {
+      display: none;
+    }
+
+  </style>
+</head>
+
+<body>
+
+</body>
+<script>
+  function htmlEncodeByRegExp(str) {
+    var s = "";
+    if (str.length == 0) return "";
+    s = str.replace(/&/g, "&amp;");
+    s = s.replace(/</g, "&lt;");
+    s = s.replace(/>/g, "&gt;");
+    s = s.replace(/ /g, "&nbsp;");
+    s = s.replace(/\'/g, "&#39;");
+    s = s.replace(/\"/g, "&quot;");
+    return s;
+  }
+
+  function htmlDecodeByRegExp(str) {
+    var s = "";
+    if (str.length == 0) return "";
+    s = str.replace(/&amp;/g, "&");
+    s = s.replace(/&lt;/g, "<");
+    s = s.replace(/&gt;/g, ">");
+    s = s.replace(/&nbsp;/g, " ");
+    s = s.replace(/&#39;/g, "\'");
+    s = s.replace(/&quot;/g, "\"");
+    return s;
+  }
+
+  function javascriptHighLight(str) {
+    var s = "";
+    if (str.length == 0) return "";
+    s = str;
+    s = s.replace(/function/g, '<span class="code-keyword">function</span>');
+    s = s.replace(/exports/g, '<span class="code-keyword">exports</span>');
+    s = s.replace(/require/g, '<span class="code-keyword">require</span>');
+    s = s.replace(/module/g, '<span class="code-keyword">module</span>');
+    s = s.replace(/typeof/g, '<span class="code-keyword">typeof</span>');
+
+    s = s.replace(/null/g, '<span class="code-key1">null</span>');
+    s = s.replace(/undefined/g, '<span class="code-keyred">undefined</span>');
+    return s;
+  }
+
+  $.ajax({
+    type: 'GET',
+    url: '/questions',
+    success: function (res) {
+      var no = 0
+      for (var ix in res) {
+        no++
+        var data = res[ix]
+        var str = '';
+        if (data.stem) {
+          str += '<div class="stem"><span class="ques-no">' + no + '.</span>' + data.stem + '</div>'
+        }
+        if (data.code) {
+          str += '<pre>' + javascriptHighLight(htmlEncodeByRegExp(data.code)) + '</pre>'
+        }
+        if (data.keyword) {
+          str += '<h5 class="keyword">' + data.keyword + '</h5>'
+        }
+        if (data.image) {
+          str += '<div><img src="' + data.image + '" width="460px"></div>'
+        }
+        $('<div class="question">' + str + '</div>').appendTo($('body'))
+      }
+    }
+  })
+
+</script>
+
+</html>

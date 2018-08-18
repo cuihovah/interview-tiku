@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>无论做什么，也不会有人愿意多陪我说说话的！</title>
+  <style>
+    input[type="text"] {
+      width: 200px;
+      height: 30px;
+      line-hight: 30px;
+      border-radius: 5px;
+    }
+
+    textarea {
+      vertical-align: text-top;
+      border-radius: 5px;
+      width: 350px;
+      height: 200px;
+    }
+
+    .label {
+      display: inline-block;
+      width: 100px;
+    }
+
+    .row {
+      margin: 5px 0px;
+    }
+
+    input[type="submit"] {
+        padding: 3px 5px;
+        border-radius: 3px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1 style="font-size: 30px;">面试题库</h1>
+  <form action="/questions" method="post" enctype="multipart/form-data">
+    <div class="row">
+      <span class="label">题干</span>
+      <textarea name="stem"></textarea>
+    </div>
+    <div class="row">
+      <span class="label">代码</span>
+      <textarea name="code"></textarea>
+    </div>
+    <div class="row">
+      <span class="label">关键字</span>
+      <input type="text" name="keyword" />
+    </div>
+    <div class="row">
+      <input type="file" name="fileUpload" />
+    </div>
+    <div class="row">
+      <input type="submit" value="确定" />
+    </div>
+  </form>
+</body>
+
+</html>

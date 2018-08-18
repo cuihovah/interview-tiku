@@ -1,0 +1,87 @@
+{"stem":"定义一个哈希表的成员与方法","code":"","keyword":"算法","image":""}
+{"stem":"写出一个方法输出1-100之间的所有素数","code":"","keyword":"算法","image":""}
+{"stem":"统计整数二进制表述中1的个数","code":"","keyword":"算法","image":""}
+{"stem":"给定一个整数数组，实现快速排进行序升序排序；如[2, 5, 8, 9, 3]排序后得到[2, 3, 5, 8, 9].","code":"","keyword":"算法","image":""}
+{"stem":"一个楼梯有N个台阶，小明层台阶最底层地面上楼梯，小明一次可最大跨3阶（每次迈步可以上1阶，2阶，或者3阶）问小明爬上顶一共有多少种步伐组合。","code":"","keyword":"算法","image":""}
+{"stem":"RESTful API是什么有什么特点。","code":"","keyword":"RESTful","image":""}
+{"stem":"Cookie是什么，除了name和value以外还有其他什么属性。实现getCookieByName(name)函数。","code":"/**\r\n * 提示：\r\n * document.cookie=\"name=cuihovah;id=1;age=30\"\r\n */","keyword":"Cookie","image":""}
+{"stem":"描述为什么Vue不支持IE8以及以下版本，如何才能使Vue.js支持IE8。","code":"","keyword":"Vue.js","image":""}
+{"stem":"描述HTTP协议结构，并详细介绍的第一行内容。","code":"","keyword":"HTTP","image":""}
+{"stem":"HTTP状态码304和200 (from disk cache)的区别。","code":"","keyword":"HTTP","image":""}
+{"stem":"前端调试的时候如何模拟弱网模式。","code":"","keyword":"调试","image":""}
+{"stem":"与后端同事联调时，有一个接口后端同事将部分数据写到HTTP Headers中会有什么风险。","code":"","keyword":"HTTP","image":""}
+{"stem":"图文并茂的简述，利用Vuex和Vue实现购物车的功能。","code":"","keyword":"Vue.js","image":""}
+{"stem":"当代码压缩优化后如何调试。","code":"","keyword":"调试","image":""}
+{"stem":"求两个数组的交集","code":"","keyword":"编码","image":""}
+{"stem":"数组去重","code":"","keyword":"编码","image":""}
+{"stem":"获取两个日期之间相差的天数","code":"","keyword":"编码","image":""}
+{"stem":"利用Promise封装Sleep函数","code":"","keyword":"Promise","image":""}
+{"stem":"minix深拷贝","code":"","keyword":"编码","image":""}
+{"stem":"正则匹配邮箱","code":"","keyword":"正则","image":""}
+{"stem":"不使用第三方库，判断标签是否闭合","code":"/**\r\n * notes: 无单标签\r\n * exampaper: input '\u003cp\u003e\u003cspan\u003e英雄达拉蹦吧\u003c/span\u003e\u003cdiv\u003e\u003c/div\u003e\u003c/span\u003e\u003c/p\u003e'\r\n * @param {string} input\r\n * @return {boolean}\r\n */\r\n\r\nfunction isBrace(input)\r\n","keyword":"编码","image":""}
+{"stem":"不使用第三方库，判断括号是否闭合","code":"/**\r\n * exampaper: input '{[(1+(2+(3+4)+5)]+(6+7)}'\r\n * @param {string} input\r\n * @return {boolean}\r\n */\r\n    \r\nfunction isBrace(input)","keyword":"编码","image":""}
+{"stem":"Flow和TypeScript的声明","code":"","keyword":"TypeScript","image":""}
+{"stem":"蛇型命名转换为小驼峰命名","code":"","keyword":"编码","image":""}
+{"stem":"简述JS规范","code":"","keyword":"其他","image":""}
+{"stem":"当浏览器搜到\"413 Request Entity Too Large\"您是会先联系后端还是先联系运维。为什么？","code":"","keyword":"HTTP","image":""}
+{"stem":"webpack style-loader和css-loader分别是做什么的。他们的加载顺序是什么","code":"","keyword":"webpack","image":""}
+{"stem":"HTTP Status Code 301和302的区别（除了字面上的含义）","code":"","keyword":"HTTP","image":""}
+{"stem":"请简述304、ETag和if-none-match的关系。","code":"","keyword":"HTTP","image":""}
+{"stem":"ETag的编码算法是什么。Weak ETag是什么。","code":"","keyword":"HTTP","image":""}
+{"stem":"Vue文件中为什么对象中没有template属性和render函数，却包含template标签。","code":"","keyword":"Vue.js","image":""}
+{"stem":"用npm安装第三方vue组件中。通常会报如下错误，请简述原因。","code":"(function (exports, require, module, __filename, __dirname) { \u003ctemplate\u003e\r\n                                      \r\n\tSyntaxError: Unexpected token \u003c","keyword":"Vue.js","image":""}
+{"stem":"如下JS结果","code":"null == 0\r\nnull == undefined\r\ntypeof null\r\ntypeof undefined","keyword":"JavaScript","image":""}
+{"stem":"请列举可能造成内存泄漏的情况","code":"","keyword":"调试","image":""}
+{"stem":"请设计跨域单点登录系统","code":"","keyword":"系统设计","image":""}
+{"stem":"简述OAuth2.0协议","code":"","keyword":"其他","image":""}
+{"stem":"如何实现下载图片而不用浏览器预览功能打开","code":"","keyword":"HTTP","image":""}
+{"stem":"一个满屏 **品** 字布局 如何设计?","code":"","keyword":"CSS","image":"/static/images/550a79644e778ed6fef5457d3a18aad1"}
+{"stem":"允许添加辅助容器，完成如下响应式布局","code":"","keyword":"CSS","image":"/static/images/05a50b4dd9116b5a3c77b1f5cd9ba62a"}
+{"stem":"如下代码有什么问题？会输出什么","code":"function autoAdd(num) {\r\n    return new Promise((s, r) =\u003e {\r\n        setTimeout(() =\u003e {\r\n            s(num + 1);\r\n        }, 1000);\r\n    });\r\n}\r\n\r\nlet nums = [1, 2, 3];\r\n\r\nlet arr = nums.map((num) =\u003e {\r\n    await autoAdd(num);\r\n});\r\n\r\nconsole.log(arr);","keyword":"Promise","image":""}
+{"stem":"自己实现一个Promise.all逻辑","code":"","keyword":"Promise","image":""}
+{"stem":"下列代码会输出什么","code":"let fs = require('fs');\r\n\r\nfs.readFile('./maopao.js', (err, data) =\u003e {\r\n    Promise.resolve().then(() =\u003e console.log('promise back1'));\r\n    setTimeout(() =\u003e console.log('settimeout1'));\r\n    setImmediate(() =\u003e console.log('setImmediate'));\r\n    process.nextTick(() =\u003e console.log('nextTick'));\r\n    Promise.resolve().then(() =\u003e console.log('promise back2'));\r\n    setTimeout(() =\u003e console.log('settimeout2'));\r\n});\r\n","keyword":"异步","image":""}
+{"stem":"利用jquery实现转换函数xml转为span标签，xml的tagName转换为html的class","code":"","keyword":"jQuery; 编码","image":"/static/images/bb118b9fbc66d109f88868f3e37ab116"}
+{"stem":"RESTful API是什么有什么特点。","code":"","keyword":"RESTful","image":""}
+{"stem":"Cookie是什么，除了name和value以外还有其他什么属性。实现getCookieByName(name)函数。","code":"/**\r\n * 提示：\r\n * document.cookie=\"name=cuihovah;id=1;age=30\"\r\n */","keyword":"Cookie","image":""}
+{"stem":"描述为什么Vue不支持IE8以及以下版本，如何才能使Vue.js支持IE8。","code":"","keyword":"Vue.js","image":""}
+{"stem":"描述HTTP协议结构，并详细介绍的第一行内容。","code":"","keyword":"HTTP","image":""}
+{"stem":"HTTP状态码304和200 (from disk cache)的区别。","code":"","keyword":"HTTP","image":""}
+{"stem":"前端调试的时候如何模拟弱网模式。","code":"","keyword":"调试","image":""}
+{"stem":"与后端同事联调时，有一个接口后端同事将部分数据写到HTTP Headers中会有什么风险。","code":"","keyword":"HTTP","image":""}
+{"stem":"图文并茂的简述，利用Vuex和Vue实现购物车的功能。","code":"","keyword":"Vue.js","image":""}
+{"stem":"当代码压缩优化后如何调试。","code":"","keyword":"调试","image":""}
+{"stem":"求两个数组的交集","code":"","keyword":"编码","image":""}
+{"stem":"数组去重","code":"","keyword":"编码","image":""}
+{"stem":"获取两个日期之间相差的天数","code":"","keyword":"编码","image":""}
+{"stem":"利用Promise封装Sleep函数","code":"","keyword":"Promise","image":""}
+{"stem":"minix深拷贝","code":"","keyword":"编码","image":""}
+{"stem":"正则匹配邮箱","code":"","keyword":"正则","image":""}
+{"stem":"不使用第三方库，判断标签是否闭合","code":"/**\r\n * notes: 无单标签\r\n * exampaper: input '\u003cp\u003e\u003cspan\u003e英雄达拉蹦吧\u003c/span\u003e\u003cdiv\u003e\u003c/div\u003e\u003c/span\u003e\u003c/p\u003e'\r\n * @param {string} input\r\n * @return {boolean}\r\n */\r\n\r\nfunction isBrace(input)\r\n","keyword":"编码","image":""}
+{"stem":"不使用第三方库，判断括号是否闭合","code":"/**\r\n * exampaper: input '{[(1+(2+(3+4)+5)]+(6+7)}'\r\n * @param {string} input\r\n * @return {boolean}\r\n */\r\n    \r\nfunction isBrace(input)","keyword":"编码","image":""}
+{"stem":"Flow和TypeScript的声明","code":"","keyword":"TypeScript","image":""}
+{"stem":"蛇型命名转换为小驼峰命名","code":"","keyword":"编码","image":""}
+{"stem":"简述JS规范","code":"","keyword":"其他","image":""}
+{"stem":"当浏览器搜到\"413 Request Entity Too Large\"您是会先联系后端还是先联系运维。为什么？","code":"","keyword":"HTTP","image":""}
+{"stem":"webpack style-loader和css-loader分别是做什么的。他们的加载顺序是什么","code":"","keyword":"webpack","image":""}
+{"stem":"HTTP Status Code 301和302的区别（除了字面上的含义）","code":"","keyword":"HTTP","image":""}
+{"stem":"请简述304、ETag和if-none-match的关系。","code":"","keyword":"HTTP","image":""}
+{"stem":"ETag的编码算法是什么。Weak ETag是什么。","code":"","keyword":"HTTP","image":""}
+{"stem":"Vue文件中为什么对象中没有template属性和render函数，却包含template标签。","code":"","keyword":"Vue.js","image":""}
+{"stem":"用npm安装第三方vue组件中。通常会报如下错误，请简述原因。","code":"(function (exports, require, module, __filename, __dirname) { \u003ctemplate\u003e\r\n                                      \r\n\tSyntaxError: Unexpected token \u003c","keyword":"Vue.js","image":""}
+{"stem":"如下JS结果","code":"null == 0\r\nnull == undefined\r\ntypeof null\r\ntypeof undefined","keyword":"JavaScript","image":""}
+{"stem":"请列举可能造成内存泄漏的情况","code":"","keyword":"调试","image":""}
+{"stem":"请设计跨域单点登录系统","code":"","keyword":"系统设计","image":""}
+{"stem":"简述OAuth2.0协议","code":"","keyword":"其他","image":""}
+{"stem":"如何实现下载图片而不用浏览器预览功能打开","code":"","keyword":"HTTP","image":""}
+{"stem":"一个满屏 **品** 字布局 如何设计?","code":"","keyword":"CSS","image":"/static/images/550a79644e778ed6fef5457d3a18aad1"}
+{"stem":"允许添加辅助容器，完成如下响应式布局","code":"","keyword":"CSS","image":"/static/images/05a50b4dd9116b5a3c77b1f5cd9ba62a"}
+{"stem":"如下代码有什么问题？会输出什么","code":"function autoAdd(num) {\r\n    return new Promise((s, r) =\u003e {\r\n        setTimeout(() =\u003e {\r\n            s(num + 1);\r\n        }, 1000);\r\n    });\r\n}\r\n\r\nlet nums = [1, 2, 3];\r\n\r\nlet arr = nums.map((num) =\u003e {\r\n    await autoAdd(num);\r\n});\r\n\r\nconsole.log(arr);","keyword":"Promise","image":""}
+{"stem":"自己实现一个Promise.all逻辑","code":"","keyword":"Promise","image":""}
+{"stem":"下列代码会输出什么","code":"let fs = require('fs');\r\n\r\nfs.readFile('./maopao.js', (err, data) =\u003e {\r\n    Promise.resolve().then(() =\u003e console.log('promise back1'));\r\n    setTimeout(() =\u003e console.log('settimeout1'));\r\n    setImmediate(() =\u003e console.log('setImmediate'));\r\n    process.nextTick(() =\u003e console.log('nextTick'));\r\n    Promise.resolve().then(() =\u003e console.log('promise back2'));\r\n    setTimeout(() =\u003e console.log('settimeout2'));\r\n});\r\n","keyword":"异步","image":""}
+{"stem":"利用jquery实现转换函数xml转为span标签，xml的tagName转换为html的class","code":"","keyword":"jQuery; 编码","image":"/static/images/bb118b9fbc66d109f88868f3e37ab116"}
+{"stem":"OSI的七层模型。","code":"","keyword":"网络","image":""}
+{"stem":"请列举下不同进程之间共享数据的方式(至少举出三种)","code":"1、文件映射(Memory-Mapped Files)能使进程把文件内容当作进程地址间一块内存那样来对待\r\n2、共享内存(Shared Memory)实际就是文件映射的一种特殊情况\r\n3、命名管道(Named Pipe)是服务器进程和一个或多个客户进程之间通信的单向或双向管道\r\n4、邮件槽(Mailslots)提供进程间单向通信能力，任何进程都能建立邮件槽成为邮件槽服务器\r\n5、剪贴板(Clipped Board)为不同应用程序之间共享不同格式数据提供了一条捷径\r\n6、动态连接库(DLL)中的全局数据可以被调用DLL的所有进程共享\r\n","keyword":"操作系统","image":""}
+{"stem":"请描述下TCP和UDP的差别，并且各列举出一个上层协议。","code":"TCP---传输控制协议,提供的是面向连接、可靠的字节流服务。当客户和服务器彼此交换数据前，必须先在双方之间建立一个TCP连接，之后才能传输数据。TCP提供超时重发，丢弃重复数据，检验数据，流量控制等功能，保证数据能从一端传到另一端。\r\n \r\nUDP---用户数据报协议，是一个简单的面向数据报的运输层协议。UDP不提供可靠性，它只是把应用程序传给IP层的数据报发送出去，但是并不能保证它们能到达目的地。由于UDP在传输数据报前不用在客户和服务器之间建立一个连接，且没有超时重发等机制，故而传输速度很快。\r\n \r\n经常使用“ping”命令的原理就是向对方主机发送UDP数据包，ftp等就是使用到的TCP协议\r\n","keyword":"网络","image":""}
+{"stem":"给出一个数据A={a_0,a_1,a_2…a_n}(其中n可变)，打印出该数值元素的所有组合。(15分)\r\n","code":"","keyword":"算法","image":""}
+{"stem":"有这样一个数组A，大小为n，相邻元素差的绝对值都是1，如A={4,5,6,5,6,7,8,9,10,9}，现在给定数组A和目标整数t，请找到t在A中的位置。","code":"","keyword":"算法","image":""}
+{"stem":"有一颗二叉树，定义树的高度为从根到叶子节点的最长距离，树的宽度为每层节点的最大值，树的面积定义为高度和宽度的乘积。写一个函数计算一个二叉树的面积。","code":"","keyword":"算法","image":""}

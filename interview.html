@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>无论做什么，也不会有人愿意多陪我说说话的！</title>
+  <title>面试辅助神器</title>
   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
   <style>
     .question {
@@ -56,17 +56,38 @@
       display: inline-block;
     }
 
+    .item {
+      min-height: 40px;
+    }
+
+    .item input[type="text"] {
+      padding: 3px 5px;
+      border-radius: 3px;
+      width: 200px;
+      height: 20px;
+    }
+
+    .item span.item-label {
+      display: inline-block;
+      width: 90px;
+      text-align: left;
+    }
+
   </style>
 </head>
 
 <body>
   <div id="edit">
-    <div>
-      姓名：
-      <input id="name" placeholder="姓名">
+      <div class="item">
+          <span class="item-label">公司名称:</span>
+          <input id="c_name_input" placeholder="公司名称" type="text">
+        </div>
+    <div class="item">
+      <span class="item-label">姓名:</span>
+      <input id="name" placeholder="姓名" type="text">
     </div>
-    <div>
-      工作年限
+    <div class="item">
+      <span class="item-label">工作年限:</span>
       <select id="age">
         <option value="0">应届生</option>
         <option value="1">1年及以下</option>
@@ -77,13 +98,14 @@
         <option value="15">10年以上</option>
       </select>
     </div>
-    <div>
-      应聘岗位:
-      <input id="tag" placeholder="应聘岗位">
+    <div class="item">
+      
+      <span class="item-label">应聘岗位:</span>
+      <input id="tag" placeholder="应聘岗位" type="text">
     </div>
 
-    <div>
-      等级:
+    <div class="item">
+      <span class="item-label">等级:</span>
       <label>
         <input id="r5" type="radio" value="初级" name="level">初级</label>
       <label>
@@ -91,24 +113,29 @@
       <label>
         <input id="r6" type="radio" value="高级" name="level">高级</label>
     </div>
-    <div id="knowledges-box">
-      知识点:
-
+    <div id="knowledges-box" class="item">
+      <span class="item-label">知识点:</span>
     </div>
-    <button id="create">生成</button>
+    <div class="item">
+      <button id="create">生成</button>
+    </div>
+    
   </div>
+  
   <div id="preview" style="display: none">
-    <div id="preview_name">
-
-    </div>
-    <div id="preview_age">
-
-    </div>
-
-    <div>
+    <h1>
+      <span id="c_name"></span><span id="t_name"></span>面试题
+    </h1>
+    <h2 class="line">
+        <span id="preview_name">
+          </span>
+          <span id="preview_age">
+          </span>
+    </h2>
+    <h3 class="line">
       <span id="preview_level"></span>
       <span id="preview_tag"></span>
-    </div>
+    </h3>
     <div id="preview_knowledges">
       技术栈:
     </div>
@@ -118,7 +145,7 @@
     <div id="preview_questions">
 
     </div>
-    <button id="create">生成</button>
+    <button id="print">确定</button>
   </div>
 </body>
 <script>
@@ -176,13 +203,14 @@
   })
 
   function remove() {
-    debugger
     var id = $(this).attr('qid');
     $('#question-' + id).remove();
   }
 
   $('#create').click(function () {
     var knowledges = [];
+    $('#c_name').html($('#c_name_input').val());
+    $('#t_name').html($('#tag').val());
     $('[name="knowledges"]:checkbox:checked').each(function () {
       knowledges.push($(this).val())
     });
@@ -239,6 +267,16 @@
         $('.remove-btn').click(remove)
       }
     });
+  })
+
+  $('#print').click(function(){
+    var no = 1;
+    $('.remove-btn').each(function(){
+      $('<span class="q-nr">'+ no +'. </span>').insertAfter($(this));
+      no++;
+      $(this).remove();
+    })
+    $(this).hide();
   })
 
 </script>

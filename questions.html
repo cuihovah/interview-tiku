@@ -37,6 +37,10 @@
       color: #d53c4c;
     }
 
+    pre span.code-keyyellow {
+      color: #b4881d;
+    }
+
     .stem {
       margin-bottom: 10px;
       font-size: 14px;
@@ -45,10 +49,6 @@
     .ques-no {
       color: #b4881d;
       margin-right: 5px;
-    }
-
-    .keyword {
-      display: none;
     }
 
   </style>
@@ -91,15 +91,19 @@
     s = s.replace(/require/g, '<span class="code-keyword">require</span>');
     s = s.replace(/module/g, '<span class="code-keyword">module</span>');
     s = s.replace(/typeof/g, '<span class="code-keyword">typeof</span>');
+    s = s.replace(/const/g, '<span class="code-keyword">const</span>');
 
     s = s.replace(/null/g, '<span class="code-key1">null</span>');
     s = s.replace(/undefined/g, '<span class="code-keyred">undefined</span>');
+
+    s = s.replace(/async/g, '<span class="code-keyyellow">async</span>');
+    s = s.replace(/await/g, '<span class="code-keyyellow">await</span>');
     return s;
   }
 
   $.ajax({
     type: 'GET',
-    url: '/questions',
+    url: '/questions?limit=1000',
     success: function (res) {
       var no = 0
       for (var ix in res) {
@@ -107,19 +111,28 @@
         var data = res[ix]
         var str = '';
         if (data.stem) {
-          str += '<div class="stem"><span class="ques-no">' + no + '.</span>' + data.stem + '</div>'
+          str += '<div class="stem"><span class="ques-no"><button class="edit-btn" data-id="'+
+            data.id +
+            '">编辑</button></span>' + data.stem + '</div>'
         }
         if (data.code) {
           str += '<pre>' + javascriptHighLight(htmlEncodeByRegExp(data.code)) + '</pre>'
-        }
-        if (data.keyword) {
-          str += '<h5 class="keyword">' + data.keyword + '</h5>'
-        }
+        }        
         if (data.image) {
           str += '<div><img src="' + data.image + '" width="460px"></div>'
         }
+        if (data.knowledge) {
+          str += '<div class="knowledge">考点：' + data.knowledge + '</div>'
+        }
+        if (data.difficulty !== undefined) {
+          str += '<div><span>难度</span><span>' + data.difficulty + '</span></div>';
+        }
         $('<div class="question">' + str + '</div>').appendTo($('body'))
       }
+      $('.edit-btn').click(function(){
+        id = $(this).attr('data-id');
+        window.location.href = '/edit.html?id='+id;
+      })
     }
   })
 

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>面试辅助神器</title>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <style>
+    input[type="text"] {
+      width: 200px;
+      height: 30px;
+      line-hight: 30px;
+      border-radius: 5px;
+    }
+
+    textarea {
+      vertical-align: text-top;
+      border-radius: 5px;
+      width: 350px;
+      height: 200px;
+    }
+
+    .label {
+      display: inline-block;
+      width: 100px;
+    }
+
+    .row {
+      margin: 5px 0px;
+    }
+
+    input[type="submit"] {
+        padding: 3px 5px;
+        border-radius: 3px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1 style="font-size: 30px;">面试题库</h1>
+    <div class="row">
+      <span class="label">题干</span>
+      <textarea id="stem" name="stem"></textarea>
+    </div>
+    <div class="row">
+      <span class="label">代码</span>
+      <textarea id="code" name="code"></textarea>
+    </div>
+    <div class="row">
+      <span class="label">关键字</span>
+      <input id="keyword" type="text" name="keyword" />
+    </div>
+    <div class="row">
+      <span class="label">难度</span>
+      <select id="difficulty" type="text" name="difficulty">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+    <div class="row">
+      <button type="button" id="submit">确定</button>
+    </div>
+</body>
+<script>
+  function getQueryByName(name) {
+    var query = {};
+    var url = window.location.href;
+    url = url.split('?')[1];
+    if (url) {
+      var kvs = url.split('&');
+      for (var ix in kvs) {
+        var kv = kvs[ix].split('=');
+        query[kv[0]] = kv[1];
+      }
+    }
+    return query[name];
+  }
+  
+  var id = getQueryByName('id');
+  $.ajax({
+    type: 'GET',
+    url: '/questions/'+id,
+    success: function(res) {
+      $('#stem').val(res.stem);
+      $('#code').val(res.code);
+      $('#keyword').val(res.knowledge);
+      $('#difficulty').val(res.difficulty);
+    }
+  });
+
+  $('#submit').click(function(){
+    $.ajax({
+      type: 'PUT',
+      url: '/questions/'+id,
+      data: JSON.stringify({
+        stem: $('#stem').val(),
+        code: $('#code').val(),
+        knowledge: $('#keyword').val(),
+        difficulty: Number($('#difficulty').val())
+      }),
+      success: function(res) {
+        window.location.href = '/questions.html'
+      }
+    })
+  })
+</script>
+</html>

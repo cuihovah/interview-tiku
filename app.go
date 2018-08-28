@@ -32,6 +32,14 @@ type Question struct {
 	Image     string        `json:"image" bson:"image"`
 }
 
+type PutQuestion struct {
+	Id        bson.ObjectId `json:"id" bson:"_id"`
+	Stem      string        `json:"stem" bson:"stem"`
+	Code      string        `json:"code" bson:"code"`
+	Knowledge string        `json:"knowledge" bson:"knowledge"`
+	Diff      int           `json:"difficulty" bson:"difficulty"`
+}
+
 type Resume struct {
 	Id         bson.ObjectId `json:"id" bson:"_id"`
 	Name       string        `json:"name" bson:"name"`
@@ -45,7 +53,7 @@ type Resume struct {
 var session *mgo.Session
 
 func main() {
-	session, err := mgo.Dial("mongodb://xxxx:xxxx@192.168.1.1:27017/tiku")
+	session, err := mgo.Dial("mongodb://cuihovah:7576583asd@47.88.49.197:27017/tiku")
 	if err != nil {
 		log.Fatal(err.Error())
 		return
@@ -148,6 +156,30 @@ func main() {
 		w.Write([]byte("{}"))
 	})
 
+	router.PUT("/questions/:id", func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+		body, _ := ioutil.ReadAll(r.Body)
+		question := PutQuestion{}
+		err := json.Unmarshal(body, &question)
+		if err != nil {
+			log.Fatal(err.Error())
+			return
+		}
+		collection := session.DB("tiku").C("question")
+		err = collection.UpdateId(bson.ObjectIdHex(ps.ByName("id")), bson.M{
+			"$set": bson.M{
+				"stem": question.Stem,
+				"code": question.Code,
+				"knowledge": question.Knowledge,
+				"difficulty": question.Diff,
+			},
+		})
+		if err != nil {
+			log.Fatal(err)
+		}
+		w.Header().Set("content-type", "application/json")
+		w.Write([]byte("{}"))
+	})
+
 	router.GET("/static/images/:name", func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		content, _ := ioutil.ReadFile("./static/images/" + ps.ByName("name"))
 		kind, unknow := filetype.Match(content)
@@ -166,6 +198,12 @@ func main() {
 
 	router.GET("/interview.html", func(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		buf, _ := ioutil.ReadFile("./interview.html")
+		w.Header().Set("content-type", "text/html")
+		w.Write(buf)
+	})
+
+	router.GET("/edit.html", func(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+		buf, _ := ioutil.ReadFile("./edit.html")
 		w.Header().Set("content-type", "text/html")
 		w.Write(buf)
 	})
@@ -215,13 +253,18 @@ func main() {
 
 		questions := []Question{}
 		collection := session.DB("tiku").C("question")
+		w.Header().Set("content-type", "application/json")
 		err = collection.Find(cond).Skip(offset).Limit(limit).All(&questions)
 		if err != nil {
-			log.Fatal(err)
+
+			log.Println(err.Error())
 		}
-		w.Header().Set("content-type", "application/json")
-		retval, _ := json.Marshal(questions)
-		w.Write(retval)
+		retval, err := json.Marshal(questions)
+		if err != nil {
+			w.Write([]byte{})
+		} else {
+			w.Write(retval)
+		}
 	})
 
 	router.GET("/questions/:id", func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {

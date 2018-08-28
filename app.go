@@ -53,7 +53,7 @@ type Resume struct {
 var session *mgo.Session
 
 func main() {
-	session, err := mgo.Dial("mongodb://cuihovah:7576583asd@47.88.49.197:27017/tiku")
+	session, err := mgo.Dial("mongodb://xxxx:xxxx@xxxx:xxxx/tiku")
 	if err != nil {
 		log.Fatal(err.Error())
 		return
